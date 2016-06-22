@@ -21,11 +21,16 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: [ 'babel' ],
-      exclude: /node_modules/,
-      include: __dirname
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: [ 'babel' ],
+        exclude: /node_modules/,
+        include: __dirname
+      },
+      { test: /\.css$/, loader: "style!css" },
+      { test: /\.png$/, loader: "url?limit=100000" },
+      { test: /\.jpg$/, loader: "file" }
+    ]
   }
 }
