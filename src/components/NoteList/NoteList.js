@@ -10,11 +10,20 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 
+import { openDialog } from '../../actions/dialogActions'
+import DeleteDialog from './DeleteDialog'
+
 const mapStateToProps = state => ({ notes: state.notes })
 const mapDispatchToProps = (dispatch) => {
   return {
     onMenuTouchTap: (e, child) => {
-      dispatch(push(`/${child.props.note}`))
+      switch(child.ref) {
+        case "read":
+          dispatch(push(`/${child.props.note}`))
+          break
+        case "delete":
+          dispatch(openDialog({ note: child.props.note }))
+      }
     }
   }
 }
@@ -54,10 +63,17 @@ const mapNotesToItems = (notes, touchTapHandler) => notes.map((note, index) => (
   </div>
 ))
 
+const handleRemove = ({note}) => {
+  console.log(note)
+}
+
 export const NoteList = (props) => (
-  <List>
-    {mapNotesToItems(props.notes, props.onMenuTouchTap)}
-  </List>
+  <div>
+    <DeleteDialog handleRemove={handleRemove} />
+    <List>
+      {mapNotesToItems(props.notes, props.onMenuTouchTap)}
+    </List>
+  </div>
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteList)

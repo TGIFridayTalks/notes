@@ -1,3 +1,4 @@
 import notes from './notes';
+import dialog from './dialog';
 
-export default {notes};
+export default {notes, dialog};
