@@ -5,12 +5,10 @@ import { push } from 'react-router-redux'
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
 
-const mapStateToProps = () => { return {} }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAddClick: () => dispatch(push('/add'))
-  }
-}
+const mapStateToProps = () => ({})
+const mapDispatchToProps = (dispatch) => ({
+  onAddClick: () => dispatch(push('/add'))
+})
 
 export const NotesBar = (props) => (
   <AppBar

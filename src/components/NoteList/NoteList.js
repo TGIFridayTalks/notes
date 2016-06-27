@@ -15,20 +15,18 @@ import { deleteNote } from '../../actions/notesActions'
 import DeleteDialog from './DeleteDialog'
 
 const mapStateToProps = state => ({ notes: state.notes })
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteNote: ({note}) => dispatch(deleteNote(note)),
-    onMenuTouchTap: (e, child) => {
-      switch(child.ref) {
-        case "read":
-          dispatch(push(`/${child.props.note}`))
-          break
-        case "delete":
-          dispatch(openDialog({ note: child.props.note }))
-      }
+const mapDispatchToProps = (dispatch) => ({
+  deleteNote: ({note}) => dispatch(deleteNote(note)),
+  onMenuTouchTap: (e, child) => {
+    switch(child.ref) {
+      case "read":
+        dispatch(push(`/${child.props.note}`))
+        break
+      case "delete":
+        dispatch(openDialog({ note: child.props.note }))
     }
   }
-}
+})
 
 const iconButtonElement = (
   <IconButton

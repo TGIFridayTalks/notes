@@ -11,13 +11,11 @@ const mapStateToProps = state => ({
   meta: state.dialog.meta
 })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    closeDialog: () => {
-      dispatch(closeDialog())
-    }
+const mapDispatchToProps = (dispatch) => ({
+  closeDialog: () => {
+    dispatch(closeDialog())
   }
-}
+})
 
 export class DeleteDialog extends React.Component {
   handleRemove() {
