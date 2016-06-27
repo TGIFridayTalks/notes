@@ -1,13 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
 
-const NotesBar = () => (
+const mapStateToProps = () => { return {} }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddClick: () => dispatch(push('/add'))
+  }
+}
+
+export const NotesBar = (props) => (
   <AppBar
     title="Notes"
     iconElementLeft={<div />}
-    iconElementRight={<FlatButton label="Add" />}
+    iconElementRight={<FlatButton onClick={props.onAddClick} label="Add" />}
   />
 )
 
-export default NotesBar
+export default connect(mapStateToProps, mapDispatchToProps)(NotesBar)

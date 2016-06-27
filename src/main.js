@@ -24,6 +24,7 @@ import reducers from './reducers'
 import App from './components/App'
 import NoteList from './components/NoteList'
 import NoteShow from './components/NoteShow'
+import NoteAdd from './components/NoteAdd'
 
 const middleware = routerMiddleware(browserHistory)
 
@@ -43,6 +44,7 @@ const Main = () => (
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={NoteList}/>
+          <Route path="/add" component={NoteAdd} />
           <Route path="/:id" component={NoteShow} />
         </Route>
       </Router>
