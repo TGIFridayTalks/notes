@@ -11,11 +11,13 @@ import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 
 import { openDialog } from '../../actions/dialogActions'
+import { deleteNote } from '../../actions/notesActions'
 import DeleteDialog from './DeleteDialog'
 
 const mapStateToProps = state => ({ notes: state.notes })
 const mapDispatchToProps = (dispatch) => {
   return {
+    deleteNote: ({note}) => dispatch(deleteNote(note)),
     onMenuTouchTap: (e, child) => {
       switch(child.ref) {
         case "read":
@@ -63,13 +65,10 @@ const mapNotesToItems = (notes, touchTapHandler) => notes.map((note, index) => (
   </div>
 ))
 
-const handleRemove = ({note}) => {
-  console.log(note)
-}
 
 export const NoteList = (props) => (
   <div>
-    <DeleteDialog handleRemove={handleRemove} />
+    <DeleteDialog handleRemove={props.deleteNote} />
     <List>
       {mapNotesToItems(props.notes, props.onMenuTouchTap)}
     </List>

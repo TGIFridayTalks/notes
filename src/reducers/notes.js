@@ -1,3 +1,5 @@
+import { NOTES_DELETE } from '../actions/notesActions'
+
 const initialState = [{
   title: `Dog Park`,
   body: `
@@ -61,5 +63,10 @@ const initialState = [{
 }]
 
 export default function notes(state=initialState, action) {
-  return state
+  switch (action.type) {
+    case NOTES_DELETE:
+      return state.filter((_, i) => i !== action.note)
+    default:
+      return state
+  }
 }
