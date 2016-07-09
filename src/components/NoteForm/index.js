@@ -17,7 +17,7 @@ const NoteForm = (props) => (
       value={props.note.body}
       hintText='Body'
       multiLine={true}
-      rows={1}
+      rows={5}
     /><br />
     <RaisedButton
       onClick={props.applyChanges.bind(null, props.note)}
