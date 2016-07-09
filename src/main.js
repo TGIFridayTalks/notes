@@ -21,9 +21,12 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 
 import reducers from './reducers'
+
+// Routable components
 import App from './components/App'
 import NoteList from './components/NoteList'
 import NoteShow from './components/NoteShow'
+import NoteEdit from './components/NoteEdit'
 import NoteAdd from './components/NoteAdd'
 
 const middleware = routerMiddleware(browserHistory)
@@ -46,6 +49,7 @@ const Main = () => (
           <IndexRoute component={NoteList}/>
           <Route path="/add" component={NoteAdd} />
           <Route path="/:id" component={NoteShow} />
+          <Route path="/:id/edit" component={NoteEdit} />
         </Route>
       </Router>
     </Provider>

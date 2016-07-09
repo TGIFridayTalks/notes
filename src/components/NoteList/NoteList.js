@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
     case 'read':
       dispatch(push(`/${child.props.note}`))
       break
+    case 'edit':
+      dispatch(push(`/${child.props.note}/edit`))
+      break
     case 'delete':
       dispatch(openDialog({ note: child.props.note }))
       break
@@ -46,6 +49,7 @@ const rightIconMenu = (id, touchTapHandler) => (
     onItemTouchTap={ touchTapHandler }
   >
     <MenuItem ref="read" note={id}>Read</MenuItem>
+    <MenuItem ref="edit" note={id}>Edit</MenuItem>
     <MenuItem ref="delete" note={id}>Delete</MenuItem>
   </IconMenu>
 )

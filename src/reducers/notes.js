@@ -1,4 +1,4 @@
-import { NOTES_DELETE, NOTES_ADD } from '../actions/notesActions'
+import { NOTES_DELETE, NOTES_ADD, NOTES_UPDATE } from '../actions/notesActions'
 
 const initialState = [{
   title: 'Dog Park',
@@ -66,6 +66,10 @@ export default function notes(state = initialState, action) {
   switch (action.type) {
   case NOTES_DELETE:
     return state.filter((_, i) => i !== action.note)
+  case NOTES_UPDATE:
+    let newState = [...state]
+    newState[action.id] = action.value
+    return newState
   case NOTES_ADD:
     return [...state, action.note]
   default:

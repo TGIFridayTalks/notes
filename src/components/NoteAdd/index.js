@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import AppBar from './AppBar'
+import AppBar from '../AppBar'
 import NoteForm from '../NoteForm'
 
 import { addNote } from '../../actions/notesActions'
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
 export const Index = (props) => {
   return (
     <div>
-      <AppBar />
+      <AppBar text='Add New Note' />
       <NoteForm {...props} />
     </div>
   )

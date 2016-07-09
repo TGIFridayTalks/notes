@@ -2,12 +2,16 @@ import React from 'react'
 
 import AppBar from 'material-ui/AppBar'
 
-const NoteBar = () => (
+const Bar = ({text}) => (
   <AppBar
-    title='Add New Note'
+    title={text}
     iconElementLeft={<div />}
     iconElementRight={<div />}
   />
 )
 
-export default NoteBar
+Bar.propTypes = {
+  text: React.PropTypes.string
+}
+
+export default Bar
