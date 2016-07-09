@@ -1,6 +1,6 @@
 import React from 'react'
 
-const App = ({ pushPath, children }) => {
+const App = ({ children }) => {
   return (
     <div>
       {children}
