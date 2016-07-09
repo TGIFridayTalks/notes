@@ -10,18 +10,18 @@ const NoteForm = (props) => (
     <TextField
       onChange={props.changeNote.bind(null, 'title')}
       value={props.note.title}
-      hintText="Title"
+      hintText='Title'
     /><br />
     <TextField
       onChange={props.changeNote.bind(null, 'body')}
       value={props.note.body}
-      hintText="Body"
+      hintText='Body'
       multiLine={true}
       rows={1}
     /><br />
     <RaisedButton
       onClick={props.applyChanges.bind(null, props.note)}
-      label="Add"
+      label={props.button || 'Add'}
       primary={true} />
   </div>
 )
@@ -29,7 +29,8 @@ const NoteForm = (props) => (
 NoteForm.propTypes = {
   note: React.PropTypes.object.isRequired,
   changeNote: React.PropTypes.func.isRequired,
-  applyChanges: React.PropTypes.func.isRequired
+  applyChanges: React.PropTypes.func.isRequired,
+  button: React.PropTypes.string
 }
 
 export default NoteForm

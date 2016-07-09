@@ -53,6 +53,7 @@ export class Index extends React.Component {
           note={this.props.note}
           applyChanges={this.props.applyChanges.bind(this, this.noteId)}
           changeNote={this.props.changeNote}
+          button='Update'
         />
       </div>
     )
