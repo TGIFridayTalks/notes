@@ -1,6 +1,6 @@
 require('./styles/main.css')
 
-import "babel-polyfill"
+import 'babel-polyfill'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 // Needed for onTouchTap
@@ -10,9 +10,9 @@ injectTapEventPlugin()
 import React from 'react'
 import { render } from 'react-dom'
 
-import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -50,7 +50,7 @@ const Main = () => (
       </Router>
     </Provider>
   </MuiThemeProvider>
-);
+)
 
 render(
   <Main />,

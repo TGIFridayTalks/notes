@@ -2,7 +2,7 @@ import React from 'react'
 
 import AppBar from 'material-ui/AppBar'
 
-const NoteBar = (props) => (
+const NoteBar = () => (
   <AppBar
     title='Add New Note'
     iconElementLeft={<div />}

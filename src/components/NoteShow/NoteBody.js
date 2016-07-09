@@ -9,4 +9,8 @@ const NoteBody = ({note}) => {
   )
 }
 
+NoteBody.propTypes = {
+  note: React.PropTypes.object.isRequired
+}
+
 export default NoteBody

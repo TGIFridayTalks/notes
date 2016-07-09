@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeNote: (field, event) => {
     dispatch(changeNote(field, event.target.value))
   },
-  addNote: (note) => {
+  applyChanges: (note) => {
     dispatch(addNote(note))
     dispatch(resetNote())
     dispatch(push('/'))
@@ -28,6 +28,11 @@ export const Index = (props) => {
       <NoteForm {...props} />
     </div>
   )
+}
+
+Index.propTypes = {
+  note: React.PropTypes.object.isRequired,
+  applyChanges: React.PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index)

@@ -1,7 +1,7 @@
 import { NOTES_DELETE, NOTES_ADD } from '../actions/notesActions'
 
 const initialState = [{
-  title: `Dog Park`,
+  title: 'Dog Park',
   body: `
     The City Council announces the opening of a new Dog Park at
     the corner of Earl and Somerset, near the Ralph’s. They would like
@@ -13,36 +13,36 @@ const initialState = [{
     period of time at the Hooded Figures. The Dog Park will not harm you.
   `
 }, {
-  title: `Are we safe from dinosaurs?`,
+  title: 'Are we safe from dinosaurs?',
   body: `
     No way!
   `
 }, {
-  title: `Drawback`,
+  title: 'Drawback',
   body: `
     Now, there is some concern about the fact that, given we are in
     the middle of a desert, there is no actual water at the waterfront.
     And that is a definite drawback, I agree.
   `
 }, {
-  title: `Guns don't kill people`,
+  title: 'Guns don\'t kill people',
   body: `
     Guns don’t kill people. It’s impossible to be killed by a gun.
     We are all invincible to bullets and it’s a miracle.
   `
 }, {
-  title: `Alligators`,
+  title: 'Alligators',
   body: `
     And now a brief public service announcement.
     Alligators: can they kill your children? Yes.
   `
 }, {
-  title: `Remember`,
+  title: 'Remember',
   body: `
     Remember: if you see something, say nothing, and drink to forget.
   `
 }, {
-  title: `Lonliness`,
+  title: 'Lonliness',
   body: `
     It has occurred to me that I may be the only one able to see it.
     Now that I think about it, I have also never bothered to check whether
@@ -52,7 +52,7 @@ const initialState = [{
     and my smooth sonorous voice.
   `
 }, {
-  title: `The Moon`,
+  title: 'The Moon',
   body: `
     The moon’s weird though, right? It’s there, and there, and then suddenly
     it’s not. And it seems to be pretty far up. Is it watching us? If not,
@@ -62,13 +62,13 @@ const initialState = [{
   `
 }]
 
-export default function notes(state=initialState, action) {
+export default function notes(state = initialState, action) {
   switch (action.type) {
-    case NOTES_DELETE:
-      return state.filter((_, i) => i !== action.note)
-    case NOTES_ADD:
-      return [...state, action.note]
-    default:
-      return state
+  case NOTES_DELETE:
+    return state.filter((_, i) => i !== action.note)
+  case NOTES_ADD:
+    return [...state, action.note]
+  default:
+    return state
   }
 }

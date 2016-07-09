@@ -5,17 +5,17 @@ const initialState = {
   meta: {}
 }
 
-export default function dialog(state=initialState, action) {
+export default function dialog(state = initialState, action) {
   switch(action.type) {
-    case DIALOG_OPEN:
-      return {
-        ...state,
-        open: true,
-        meta: action.meta
-      }
-    case DIALOG_CLOSE:
-      return {...state, open: false}
-    default:
-      return state
+  case DIALOG_OPEN:
+    return {
+      ...state,
+      open: true,
+      meta: action.meta
+    }
+  case DIALOG_CLOSE:
+    return {...state, open: false}
+  default:
+    return state
   }
 }

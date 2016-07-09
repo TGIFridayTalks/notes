@@ -9,4 +9,8 @@ const NoteBar = (props) => (
   />
 )
 
+NoteBar.propTypes = {
+  note: React.PropTypes.object
+}
+
 export default NoteBar

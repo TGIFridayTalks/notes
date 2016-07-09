@@ -18,4 +18,8 @@ export const NotesBar = (props) => (
   />
 )
 
+NotesBar.propTypes = {
+  onAddClick: React.PropTypes.func.isRequired
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(NotesBar)

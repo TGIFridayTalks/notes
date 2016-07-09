@@ -18,6 +18,13 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export class DeleteDialog extends React.Component {
+  static propTypes = {
+    open: React.PropTypes.bool.isRequired,
+    meta: React.PropTypes.object,
+    handleRemove: React.PropTypes.func.isRequired,
+    closeDialog: React.PropTypes.func.isRequired
+  }
+
   handleRemove() {
     this.props.handleRemove(this.props.meta)
     this.props.closeDialog()
@@ -34,7 +41,7 @@ export class DeleteDialog extends React.Component {
         label="Delete"
         primary={true}
         onTouchTap={this.handleRemove.bind(this)}
-      />,
+      />
     ]
 
     return (

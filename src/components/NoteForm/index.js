@@ -20,10 +20,16 @@ const NoteForm = (props) => (
       rows={1}
     /><br />
     <RaisedButton
-      onClick={props.addNote.bind(null, props.note)}
+      onClick={props.applyChanges.bind(null, props.note)}
       label="Add"
       primary={true} />
   </div>
 )
+
+NoteForm.propTypes = {
+  note: React.PropTypes.object.isRequired,
+  changeNote: React.PropTypes.func.isRequired,
+  applyChanges: React.PropTypes.func.isRequired
+}
 
 export default NoteForm

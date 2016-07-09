@@ -19,11 +19,13 @@ const mapDispatchToProps = (dispatch) => ({
   deleteNote: ({note}) => dispatch(deleteNote(note)),
   onMenuTouchTap: (e, child) => {
     switch(child.ref) {
-      case "read":
-        dispatch(push(`/${child.props.note}`))
-        break
-      case "delete":
-        dispatch(openDialog({ note: child.props.note }))
+    case 'read':
+      dispatch(push(`/${child.props.note}`))
+      break
+    case 'delete':
+      dispatch(openDialog({ note: child.props.note }))
+      break
+    // no default
     }
   }
 })
@@ -72,5 +74,11 @@ export const NoteList = (props) => (
     </List>
   </div>
 )
+
+NoteList.propTypes = {
+  notes: React.PropTypes.arrayOf(React.PropTypes.object),
+  deleteNote: React.PropTypes.func.isRequired,
+  onMenuTouchTap: React.PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteList)
