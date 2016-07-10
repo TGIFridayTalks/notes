@@ -18,21 +18,31 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addNote(note))
     dispatch(resetNote())
     dispatch(push('/'))
+  },
+  resetNote: () => {
+    dispatch(resetNote())
   }
 })
 
-export const Index = (props) => {
-  return (
-    <div>
-      <AppBar text='Add New Note' />
-      <NoteForm {...props} />
-    </div>
-  )
-}
+class Index extends React.Component {
+  static propTypes = {
+    note: React.PropTypes.object.isRequired,
+    applyChanges: React.PropTypes.func.isRequired,
+    resetNote: React.PropTypes.func.isRequired
+  }
 
-Index.propTypes = {
-  note: React.PropTypes.object.isRequired,
-  applyChanges: React.PropTypes.func.isRequired
+  componentWillMount() {
+    this.props.resetNote()
+  }
+
+  render() {
+    return (
+      <div>
+        <AppBar text='Add New Note' />
+        <NoteForm {...this.props} />
+      </div>
+    )
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index)
