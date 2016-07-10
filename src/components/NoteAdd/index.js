@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-class Index extends React.Component {
+export class Index extends React.Component {
   static propTypes = {
     note: React.PropTypes.object.isRequired,
     applyChanges: React.PropTypes.func.isRequired,
