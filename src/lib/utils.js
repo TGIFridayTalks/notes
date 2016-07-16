@@ -7,3 +7,7 @@ export function makeActionCreator(type, ...argNames) {
     return action
   }
 }
+
+export function isEmpty(obj) {
+  return Object.keys(obj).length === 0
+}

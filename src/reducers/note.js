@@ -1,7 +1,5 @@
 import { NOTE_CHANGE, NOTE_RESET, NOTE_SET } from '../actions/noteActions'
 const initialState = {
-  title: '',
-  body: ''
 }
 
 export default function note(state = initialState, action) {

@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
 
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
@@ -10,28 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 
-import { openDialog } from '../../actions/dialogActions'
-import { deleteNote } from '../../actions/notesActions'
 import DeleteDialog from './DeleteDialog'
-
-const mapStateToProps = state => ({ notes: state.notes })
-const mapDispatchToProps = (dispatch) => ({
-  deleteNote: ({note}) => dispatch(deleteNote(note)),
-  onMenuTouchTap: (e, child) => {
-    switch(child.ref) {
-    case 'read':
-      dispatch(push(`/${child.props.note}`))
-      break
-    case 'edit':
-      dispatch(push(`/${child.props.note}/edit`))
-      break
-    case 'delete':
-      dispatch(openDialog({ note: child.props.note }))
-      break
-    // no default
-    }
-  }
-})
 
 const iconButtonElement = (
   <IconButton
@@ -54,14 +31,14 @@ const rightIconMenu = (id, touchTapHandler) => (
   </IconMenu>
 )
 
-const mapNotesToItems = (notes, touchTapHandler) => notes.map((note, index) => (
-  <div key={index}>
+const mapNotesToItems = (notes, touchTapHandler) => Object.keys(notes).map((id) => (
+  <div key={id}>
     <ListItem
-      rightIconButton={rightIconMenu(index, touchTapHandler)}
-      primaryText={note.title}
+      rightIconButton={rightIconMenu(id, touchTapHandler)}
+      primaryText={notes[id].title}
       secondaryText={
         <p>
-          {note.body}
+          {notes[id].body}
         </p>
       }
     />
@@ -69,8 +46,7 @@ const mapNotesToItems = (notes, touchTapHandler) => notes.map((note, index) => (
   </div>
 ))
 
-
-export const NoteList = (props) => (
+const NoteList = (props) => (
   <div>
     <DeleteDialog handleRemove={props.deleteNote} />
     <List>
@@ -80,9 +56,9 @@ export const NoteList = (props) => (
 )
 
 NoteList.propTypes = {
-  notes: React.PropTypes.arrayOf(React.PropTypes.object),
+  notes: React.PropTypes.object,
   deleteNote: React.PropTypes.func.isRequired,
   onMenuTouchTap: React.PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteList)
+export default NoteList

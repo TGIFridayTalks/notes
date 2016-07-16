@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 export const Index = ({params, notes}) => {
-  const note = notes[parseInt(params.id, 10)]
+  const note = notes[params.id] || {}
 
   return (
     <div>
@@ -21,7 +21,7 @@ export const Index = ({params, notes}) => {
 
 Index.propTypes = {
   params: React.PropTypes.object.isRequired,
-  notes: React.PropTypes.arrayOf(React.PropTypes.object)
+  notes: React.PropTypes.object
 }
 
 export default connect(mapStateToProps)(Index)

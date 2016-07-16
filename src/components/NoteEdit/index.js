@@ -9,6 +9,8 @@ import NoteForm from '../NoteForm'
 import { updateNote } from '../../actions/notesActions'
 import { changeNote, resetNote, setNote } from '../../actions/noteActions'
 
+import { isEmpty } from '../../lib/utils'
+
 const mapStateToProps = state => ({
   notes: state.notes,
   note: state.note
@@ -31,18 +33,28 @@ export class Index extends React.Component {
   static propTypes = {
     params: React.PropTypes.object.isRequired,
     note: React.PropTypes.object,
-    notes: React.PropTypes.arrayOf(React.PropTypes.object),
+    notes: React.PropTypes.object,
     applyChanges: React.PropTypes.func.isRequired,
     setNote: React.PropTypes.func.isRequired,
     changeNote: React.PropTypes.func.isRequired
   }
 
   get noteId() {
-    return parseInt(this.props.params.id, 10)
+    return this.props.params.id
+  }
+
+  tryToLoadNote(props) {
+    if (props.notes[this.noteId] && isEmpty(this.props.note)) {
+      props.setNote(props.notes[this.noteId])
+    }
   }
 
   componentWillMount() {
-    this.props.setNote(this.props.notes[this.noteId])
+    this.tryToLoadNote(this.props)
+  }
+
+  componentWillReceiveProps(props) {
+    this.tryToLoadNote(props)
   }
 
   render() {

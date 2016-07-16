@@ -19,8 +19,10 @@ import { Provider } from 'react-redux'
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
+import createSagaMiddleware from 'redux-saga'
 
 import reducers from './reducers'
+import sagas from './sagas/index'
 
 // Routable components
 import App from './components/App'
@@ -30,14 +32,17 @@ import NoteEdit from './components/NoteEdit'
 import NoteAdd from './components/NoteAdd'
 
 const middleware = routerMiddleware(browserHistory)
+const sagaMiddleware = createSagaMiddleware()
 
 let store = createStore(
   combineReducers({
     ...reducers,
     routing: routerReducer
   }),
-  applyMiddleware(middleware)
+  applyMiddleware(middleware, sagaMiddleware)
 )
+
+sagaMiddleware.run(sagas)
 
 const history = syncHistoryWithStore(browserHistory, store)
 
