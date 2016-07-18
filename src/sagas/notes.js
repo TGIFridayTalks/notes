@@ -14,7 +14,7 @@ import database from '../lib/firebase'
 export function *loadNotes() {
   // database.once('value').then((snapshot) => {})
   const snapshot = yield call([database, database.once], 'value')
-  const notes = snapshot.val()
+  const notes = yield call([snapshot, snapshot.val])
   yield put(loadNotesSucceed(notes))
 }
 
